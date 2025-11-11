@@ -35,9 +35,9 @@
             // 
             // LoadTestCases
             // 
-            this.LoadTestCases.Location = new System.Drawing.Point(12, 317);
+            this.LoadTestCases.Location = new System.Drawing.Point(144, 538);
             this.LoadTestCases.Name = "LoadTestCases";
-            this.LoadTestCases.Size = new System.Drawing.Size(115, 23);
+            this.LoadTestCases.Size = new System.Drawing.Size(164, 37);
             this.LoadTestCases.TabIndex = 0;
             this.LoadTestCases.Text = "Load TestCase";
             this.LoadTestCases.UseVisualStyleBackColor = true;
@@ -46,16 +46,16 @@
             // dgvSimulationTable
             // 
             this.dgvSimulationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSimulationTable.Location = new System.Drawing.Point(-1, 6);
+            this.dgvSimulationTable.Location = new System.Drawing.Point(12, 6);
             this.dgvSimulationTable.Name = "dgvSimulationTable";
-            this.dgvSimulationTable.Size = new System.Drawing.Size(610, 268);
+            this.dgvSimulationTable.Size = new System.Drawing.Size(1057, 526);
             this.dgvSimulationTable.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 352);
+            this.ClientSize = new System.Drawing.Size(1081, 578);
             this.Controls.Add(this.dgvSimulationTable);
             this.Controls.Add(this.LoadTestCases);
             this.Name = "Form1";

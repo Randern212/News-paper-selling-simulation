@@ -31,7 +31,8 @@ namespace NewspaperSellerModels
                 LostProfit = (Demand - numberPurchased) * (sellingPrice - purchaseCost);
             else if (Demand < numberPurchased)
                 ScrapProfit = (numberPurchased - Demand) * scrapPrice;
-           
+            
+
             DailyNetProfit = SalesProfit - DailyCost - LostProfit + ScrapProfit;
         }
 

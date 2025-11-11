@@ -126,17 +126,19 @@ namespace NewspaperSellerSimulation
                                     new DayTypeDistribution { DayType = Enums.DayType.Poor, Probability = poorProb }
                                 }
                             };
-                            int cumulative = 0;
-                            foreach (var dist in demandDist.DayTypeDistributions)
-                            {
-                                dist.MinRange = cumulative + 1;
-                                cumulative += (int)(dist.Probability * 100);
-                                dist.CummProbability = cumulative;
-                                dist.MaxRange = cumulative;
-                            }
-
                             system.DemandDistributions.Add(demandDist);
                             i++;
+                        }
+                        for(int index=0;index<3;index++)
+                        {
+                            int cumulative = 0;
+                            foreach (var dist in system.DemandDistributions)
+                            {
+                                dist.DayTypeDistributions[index].MinRange = cumulative + 1;
+                                cumulative += (int)(dist.DayTypeDistributions[index].Probability * 100);
+                                dist.DayTypeDistributions[index].CummProbability = cumulative;
+                                dist.DayTypeDistributions[index].MaxRange = cumulative;
+                            }
                         }
                         break;
 
