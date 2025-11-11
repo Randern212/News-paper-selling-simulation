@@ -39,6 +39,21 @@ namespace NewspaperSellerModels
 
             return Enums.DayType.Poor;
         }
+
+        public int demandUsingProbability(int randomDigit)
+        {
+            foreach (DemandDistribution demandDist in DemandDistributions)
+            {
+                foreach(DayTypeDistribution dayDist in demandDist.DayTypeDistributions)
+                {
+                    if (dayDist.MinRange < randomDigit && dayDist.MaxRange > randomDigit)
+                        return demandDist.Demand;
+                }
+            }
+
+            return 0;
+        }
+
         public void runSimulation()
         {
             this.SimulationTable.Clear();
@@ -52,7 +67,7 @@ namespace NewspaperSellerModels
                 simulationCase.RandomNewsDayType = randomDay.Next(1,101);
                 simulationCase.RandomDemand = randomDemand.Next(1, 101);
                 simulationCase.NewsDayType=dayTypeUsingProbability(simulationCase.RandomNewsDayType);
-
+                simulationCase.Demand=demandUsingProbability(simulationCase.Demand);
 
                 simulationCase.calculateCase();
                 this.SimulationTable.Add(simulationCase);
