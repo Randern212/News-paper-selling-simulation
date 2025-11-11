@@ -29,31 +29,6 @@ namespace NewspaperSellerModels
         public List<SimulationCase> SimulationTable { get; set; }
         public PerformanceMeasures PerformanceMeasures { get; set; }
 
-        public int getMinDayDigit()
-        {
-            int minDigit=this.DayTypeDistributions[0].MinRange;
-            foreach(var dist in this.DayTypeDistributions)
-            {
-                if (minDigit > dist.MinRange)
-                {
-                    minDigit = dist.MinRange;
-                }
-            }
-            return minDigit;
-        }
-        public int getMaxDayDigit()
-        {
-            int minDigit = this.DayTypeDistributions[0].MaxRange;
-            foreach (var dist in this.DayTypeDistributions)
-            {
-                if (minDigit < dist.MaxRange)
-                {
-                    minDigit = dist.MaxRange;
-                }
-            }
-            return minDigit;
-        }
-
         public void runSimulation()
         {
             this.SimulationTable.Clear();
@@ -64,7 +39,9 @@ namespace NewspaperSellerModels
             {
                 SimulationCase simulationCase = new SimulationCase();
                 simulationCase.DayNo = i+1;
-                simulationCase.RandomNewsDayType = randomDay.Next(this.getMinDayDigit(),this.getMaxDayDigit());
+                simulationCase.RandomNewsDayType = randomDay.Next(1,101);
+                simulationCase.RandomDemand = randomDemand.Next(1, 101);
+
 
                 this.SimulationTable.Add(simulationCase);
             }
