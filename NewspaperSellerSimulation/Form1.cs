@@ -140,6 +140,7 @@ namespace NewspaperSellerSimulation
                                 dist.DayTypeDistributions[index].MaxRange = cumulative;
                             }
                         }
+                        DebugDemandRanges(system);
                         break;
 
                     default:
@@ -164,6 +165,19 @@ namespace NewspaperSellerSimulation
             "DemandDistributions"
         };
             return keys.Contains(line);
+        }
+        private void DebugDemandRanges(SimulationSystem system)
+        {
+            Console.WriteLine("DEMAND RANGES DEBUG:");
+            foreach (var dayType in new[] { Enums.DayType.Good, Enums.DayType.Fair, Enums.DayType.Poor })
+            {
+                Console.WriteLine($"\n{dayType} Day:");
+                foreach (var demandDist in system.DemandDistributions)
+                {
+                    var dist = demandDist.DayTypeDistributions.First(d => d.DayType == dayType);
+                    Console.WriteLine($"  Demand {demandDist.Demand}: Range {dist.MinRange}-{dist.MaxRange} (Prob: {dist.Probability})");
+                }
+            }
         }
         private void RefreshDataBinding()
         {
