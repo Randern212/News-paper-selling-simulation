@@ -84,14 +84,13 @@ namespace NewspaperSellerModels
         {
             this.SimulationTable.Clear();
 
-            Random randomDay= new Random();
-            Random randomDemand = new Random();
+            Random rand= new Random();
             for (int i=0;i< this.NumOfRecords;i++)
             {
                 SimulationCase simulationCase = new SimulationCase();
                 simulationCase.DayNo = i+1;
-                simulationCase.RandomNewsDayType = randomDay.Next(1,100);
-                simulationCase.RandomDemand = randomDemand.Next(1, 100);
+                simulationCase.RandomNewsDayType = rand.Next(1,100);
+                simulationCase.RandomDemand = rand.Next(1, 100);
                 simulationCase.NewsDayType=dayTypeUsingProbability(simulationCase.RandomNewsDayType);
                 simulationCase.Demand=demandUsingProbability(simulationCase.RandomDemand);
 

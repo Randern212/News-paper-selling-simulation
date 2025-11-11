@@ -148,6 +148,7 @@ namespace NewspaperSellerSimulation
 
             system.UnitProfit = system.SellingPrice - system.PurchasePrice;
             system.runSimulation();
+            RefreshDataBinding();
         }
         private bool IsConfigKey(string line)
         {
@@ -162,5 +163,15 @@ namespace NewspaperSellerSimulation
         };
             return keys.Contains(line);
         }
+        private void RefreshDataBinding()
+        {
+            var bindingSource = dgvSimulationTable.DataSource as BindingSource;
+            if (bindingSource != null)
+            {
+                bindingSource.ResetBindings(false);
+            }
+        }
     }
+
+
 }
