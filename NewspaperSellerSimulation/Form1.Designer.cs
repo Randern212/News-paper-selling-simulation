@@ -28,11 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.LoadTestCases = new System.Windows.Forms.Button();
+            this.dgvSimulationTable = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSimulationTable)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // LoadTestCases
+            // 
+            this.LoadTestCases.Location = new System.Drawing.Point(12, 317);
+            this.LoadTestCases.Name = "LoadTestCases";
+            this.LoadTestCases.Size = new System.Drawing.Size(115, 23);
+            this.LoadTestCases.TabIndex = 0;
+            this.LoadTestCases.Text = "Load TestCase";
+            this.LoadTestCases.UseVisualStyleBackColor = true;
+            this.LoadTestCases.Click += new System.EventHandler(this.loadTestCasesButton);
+            // 
+            // dgvSimulationTable
+            // 
+            this.dgvSimulationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSimulationTable.Location = new System.Drawing.Point(-1, 6);
+            this.dgvSimulationTable.Name = "dgvSimulationTable";
+            this.dgvSimulationTable.Size = new System.Drawing.Size(610, 268);
+            this.dgvSimulationTable.TabIndex = 1;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(621, 352);
+            this.Controls.Add(this.dgvSimulationTable);
+            this.Controls.Add(this.LoadTestCases);
+            this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSimulationTable)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button LoadTestCases;
+        private System.Windows.Forms.DataGridView dgvSimulationTable;
     }
 }

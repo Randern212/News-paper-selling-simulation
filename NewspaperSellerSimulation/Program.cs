@@ -19,7 +19,7 @@ namespace NewspaperSellerSimulation
             SimulationSystem system=new SimulationSystem();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form1(system));
 
 
             List<string> testCaseNames = new List<string> { Constants.FileNames.TestCase1, Constants.FileNames.TestCase2, Constants.FileNames.TestCase3 }; ;

@@ -125,3 +125,4 @@ G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\Newspape
 G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\Newspape.551AD9A8.Up2Date
 G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.exe
 G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.pdb
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.Form1.resources

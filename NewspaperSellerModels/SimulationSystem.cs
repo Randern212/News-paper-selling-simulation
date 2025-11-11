@@ -90,8 +90,8 @@ namespace NewspaperSellerModels
             {
                 SimulationCase simulationCase = new SimulationCase();
                 simulationCase.DayNo = i+1;
-                simulationCase.RandomNewsDayType = randomDay.Next(1,101);
-                simulationCase.RandomDemand = randomDemand.Next(1, 101);
+                simulationCase.RandomNewsDayType = randomDay.Next(1,100);
+                simulationCase.RandomDemand = randomDemand.Next(1, 100);
                 simulationCase.NewsDayType=dayTypeUsingProbability(simulationCase.RandomNewsDayType);
                 simulationCase.Demand=demandUsingProbability(simulationCase.Demand);
 
