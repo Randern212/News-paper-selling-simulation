@@ -33,7 +33,7 @@ namespace NewspaperSellerModels
         {
             foreach(DayTypeDistribution dist in DayTypeDistributions)
             {
-                if (dist.MinRange < randomDigit && dist.MaxRange > randomDigit)
+                if (dist.MinRange <= randomDigit && dist.MaxRange >= randomDigit)
                     return dist.DayType;
             }
 
@@ -46,7 +46,7 @@ namespace NewspaperSellerModels
             {
                 foreach(DayTypeDistribution dayDist in demandDist.DayTypeDistributions)
                 {
-                    if (dayDist.MinRange < randomDigit && dayDist.MaxRange > randomDigit)
+                    if (dayDist.MinRange <= randomDigit && dayDist.MaxRange >= randomDigit)
                         return demandDist.Demand;
                 }
             }
@@ -93,7 +93,7 @@ namespace NewspaperSellerModels
                 simulationCase.RandomNewsDayType = randomDay.Next(1,100);
                 simulationCase.RandomDemand = randomDemand.Next(1, 100);
                 simulationCase.NewsDayType=dayTypeUsingProbability(simulationCase.RandomNewsDayType);
-                simulationCase.Demand=demandUsingProbability(simulationCase.Demand);
+                simulationCase.Demand=demandUsingProbability(simulationCase.RandomDemand);
 
                 simulationCase.calculateCase(NumOfNewspapers, PurchasePrice,SellingPrice,ScrapPrice,UnitProfit);
                 this.SimulationTable.Add(simulationCase);

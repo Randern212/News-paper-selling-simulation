@@ -19,20 +19,21 @@ namespace NewspaperSellerModels
         public decimal ScrapProfit { get; set; } 
         public decimal DailyNetProfit { get; set; }
 
-        public void calculateCase(int numberPurchased,decimal purchaseCost, decimal sellingCost, decimal scrapPrice, decimal unitProfit)
+        public void calculateCase(int numberPurchased, decimal purchaseCost, decimal sellingPrice, decimal scrapPrice, decimal unitProfit)
         {
-            this.DailyCost = purchaseCost * numberPurchased;
-            this.SalesProfit = sellingCost * this.Demand;
-            this.ScrapProfit= scrapPrice * Math.Abs(this.Demand-numberPurchased);
+            DailyCost = numberPurchased * purchaseCost;
+            SalesProfit = Demand * sellingPrice;
 
-            decimal diff = this.DailyCost - (this.SalesProfit + this.ScrapProfit);
-            if (diff < 0)
-                this.LostProfit = Math.Abs(diff);
-            else
-                this.LostProfit = 0;
-            
-            this.DailyNetProfit = this.SalesProfit - this.DailyCost - this.LostProfit + this.ScrapProfit;
+            LostProfit = 0;
+            ScrapProfit = 0;
 
+            if (Demand > numberPurchased)
+                LostProfit = (Demand - numberPurchased) * (sellingPrice - purchaseCost);
+            else if (Demand < numberPurchased)
+                ScrapProfit = (numberPurchased - Demand) * scrapPrice;
+           
+            DailyNetProfit = SalesProfit - DailyCost - LostProfit + ScrapProfit;
         }
+
     }
 }

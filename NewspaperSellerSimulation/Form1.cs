@@ -21,7 +21,10 @@ namespace NewspaperSellerSimulation
         {
             InitializeComponent();
             this.system = system;
-            dgvSimulationTable.DataSource = system.SimulationTable;
+            BindingSource simBindingSource = new BindingSource();
+
+            simBindingSource.DataSource = system.SimulationTable;
+            dgvSimulationTable.DataSource = simBindingSource;
         }
 
         private void loadTestCasesButton(object sender, EventArgs e)
@@ -29,21 +32,18 @@ namespace NewspaperSellerSimulation
             OpenFileDialog openFile = new OpenFileDialog
             {
                 Filter = "Text files (*.txt)|*.txt",
-                Title = "Select Configuration File"
+                Title = "Select testCase File"
             };
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 readConfiguration(openFile.FileName);
-                MessageBox.Show("Configuration loaded successfully!");
+                MessageBox.Show("testCase loaded successfully!");
             }
         }
         public void readConfiguration(string fileName)
         {
-            var lines = File.ReadAllLines(fileName)
-                            .Select(l => l.Trim())
-                            .Where(l => !string.IsNullOrWhiteSpace(l))
-                            .ToList();
+            var lines = File.ReadAllLines(fileName).Select(l => l.Trim()).Where(l => !string.IsNullOrWhiteSpace(l)).ToList();
 
             int i = 0;
 
@@ -81,17 +81,25 @@ namespace NewspaperSellerSimulation
 
                     case "DayTypeDistributions":
                         {
-                            var parts = lines[i].Split(',')
-                                .Select(p => decimal.Parse(p.Trim(), CultureInfo.InvariantCulture))
-                                .ToArray();
+                            var parts = lines[i].Split(',').Select(p => decimal.Parse(p.Trim(), CultureInfo.InvariantCulture)).ToArray();
 
                             // Assuming the order: Good, Fair, Poor
                             system.DayTypeDistributions = new List<DayTypeDistribution>
-                        {
-                            new DayTypeDistribution { DayType = Enums.DayType.Good, Probability = parts[0] },
-                            new DayTypeDistribution { DayType = Enums.DayType.Fair, Probability = parts[1] },
-                            new DayTypeDistribution { DayType = Enums.DayType.Poor, Probability = parts[2] }
-                        };
+                            {
+                                new DayTypeDistribution { DayType = Enums.DayType.Good, Probability = parts[0] },
+                                new DayTypeDistribution { DayType = Enums.DayType.Fair, Probability = parts[1] },
+                                new DayTypeDistribution { DayType = Enums.DayType.Poor, Probability = parts[2] }
+                            };
+
+                            int cumulative = 0;
+                            foreach (var dist in system.DayTypeDistributions)
+                            {
+                                dist.MinRange = cumulative + 1;
+                                cumulative += (int)(dist.Probability * 100);
+                                dist.MaxRange = cumulative;
+                            }
+
+
 
                             i++;
                         }
@@ -116,12 +124,22 @@ namespace NewspaperSellerSimulation
                             {
                                 Demand = demand,
                                 DayTypeDistributions = new List<DayTypeDistribution>
-                            {
-                                new DayTypeDistribution { DayType = Enums.DayType.Good, Probability = goodProb },
-                                new DayTypeDistribution { DayType = Enums.DayType.Fair, Probability = fairProb },
-                                new DayTypeDistribution { DayType = Enums.DayType.Poor, Probability = poorProb }
-                            }
+                                {
+                                    new DayTypeDistribution { DayType = Enums.DayType.Good, Probability = goodProb },
+                                    new DayTypeDistribution { DayType = Enums.DayType.Fair, Probability = fairProb },
+                                    new DayTypeDistribution { DayType = Enums.DayType.Poor, Probability = poorProb }
+                                }
                             };
+                            foreach(DemandDistribution dDist in system.DemandDistributions)
+                            {
+                                int cumulative = 0;
+                                foreach (var dist in dDist.DayTypeDistributions)
+                                {
+                                    dist.MinRange = cumulative + 1;
+                                    cumulative += (int)(dist.Probability * 100);
+                                    dist.MaxRange = cumulative;
+                                }
+                            }
 
                             system.DemandDistributions.Add(demandDist);
                             i++;
@@ -136,7 +154,6 @@ namespace NewspaperSellerSimulation
 
             system.UnitProfit = system.SellingPrice - system.PurchasePrice;
             system.runSimulation();
-            Application.DoEvents();
         }
         private bool IsConfigKey(string line)
         {
