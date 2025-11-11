@@ -69,7 +69,7 @@ namespace NewspaperSellerModels
                 simulationCase.NewsDayType=dayTypeUsingProbability(simulationCase.RandomNewsDayType);
                 simulationCase.Demand=demandUsingProbability(simulationCase.Demand);
 
-                simulationCase.calculateCase(PurchasePrice,SellingPrice,ScrapPrice,UnitProfit);
+                simulationCase.calculateCase(NumOfNewspapers, PurchasePrice,SellingPrice,ScrapPrice,UnitProfit);
                 this.SimulationTable.Add(simulationCase);
             }
         }
