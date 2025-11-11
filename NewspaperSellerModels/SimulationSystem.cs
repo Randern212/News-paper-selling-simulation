@@ -29,6 +29,16 @@ namespace NewspaperSellerModels
         public List<SimulationCase> SimulationTable { get; set; }
         public PerformanceMeasures PerformanceMeasures { get; set; }
 
+        public Enums.DayType dayTypeUsingProbability(int randomDigit)
+        {
+            foreach(DayTypeDistribution dist in DayTypeDistributions)
+            {
+                if (dist.MinRange < randomDigit && dist.MaxRange > randomDigit)
+                    return dist.DayType;
+            }
+
+            return Enums.DayType.Poor;
+        }
         public void runSimulation()
         {
             this.SimulationTable.Clear();
@@ -41,8 +51,10 @@ namespace NewspaperSellerModels
                 simulationCase.DayNo = i+1;
                 simulationCase.RandomNewsDayType = randomDay.Next(1,101);
                 simulationCase.RandomDemand = randomDemand.Next(1, 101);
+                simulationCase.NewsDayType=dayTypeUsingProbability(simulationCase.RandomNewsDayType);
 
 
+                simulationCase.calculateCase();
                 this.SimulationTable.Add(simulationCase);
             }
         }
