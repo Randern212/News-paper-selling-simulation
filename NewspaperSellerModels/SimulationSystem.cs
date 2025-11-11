@@ -54,6 +54,32 @@ namespace NewspaperSellerModels
             return 0;
         }
 
+        public void performanceReview()
+        {
+            this.PerformanceMeasures.TotalSalesProfit = 0;
+            this.PerformanceMeasures.TotalCost = 0;
+            this.PerformanceMeasures.TotalLostProfit = 0;
+            this.PerformanceMeasures.TotalScrapProfit = 0;
+            this.PerformanceMeasures.TotalNetProfit = 0;
+            this.PerformanceMeasures.DaysWithMoreDemand = 0;
+            this.PerformanceMeasures.DaysWithUnsoldPapers = 0;
+
+            foreach(SimulationCase sim in SimulationTable)
+            {
+                this.PerformanceMeasures.TotalSalesProfit +=sim.SalesProfit;
+                this.PerformanceMeasures.TotalCost += sim.DailyCost;
+                this.PerformanceMeasures.TotalLostProfit += sim.LostProfit;
+                this.PerformanceMeasures.TotalScrapProfit +=sim.ScrapProfit;
+                this.PerformanceMeasures.TotalNetProfit +=sim.DailyNetProfit;
+
+                if(sim.LostProfit>0)
+                    this.PerformanceMeasures.DaysWithUnsoldPapers++;
+
+                if(sim.ScrapProfit>0)
+                    this.PerformanceMeasures.DaysWithMoreDemand++;
+            }
+        }
+
         public void runSimulation()
         {
             this.SimulationTable.Clear();
@@ -72,6 +98,7 @@ namespace NewspaperSellerModels
                 simulationCase.calculateCase(NumOfNewspapers, PurchasePrice,SellingPrice,ScrapPrice,UnitProfit);
                 this.SimulationTable.Add(simulationCase);
             }
+            this.performanceReview();
         }
     }
 }
