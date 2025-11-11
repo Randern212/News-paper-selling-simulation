@@ -83,7 +83,6 @@ namespace NewspaperSellerSimulation
                         {
                             var parts = lines[i].Split(',').Select(p => decimal.Parse(p.Trim(), CultureInfo.InvariantCulture)).ToArray();
 
-                            // Assuming the order: Good, Fair, Poor
                             system.DayTypeDistributions = new List<DayTypeDistribution>
                             {
                                 new DayTypeDistribution { DayType = Enums.DayType.Good, Probability = parts[0] },
@@ -96,10 +95,9 @@ namespace NewspaperSellerSimulation
                             {
                                 dist.MinRange = cumulative + 1;
                                 cumulative += (int)(dist.Probability * 100);
+                                dist.CummProbability = cumulative;
                                 dist.MaxRange = cumulative;
                             }
-
-
 
                             i++;
                         }
@@ -111,9 +109,7 @@ namespace NewspaperSellerSimulation
 
                         while (i < lines.Count && !IsConfigKey(lines[i]))
                         {
-                            var parts = lines[i].Split(',')
-                                .Select(p => p.Trim())
-                                .ToArray();
+                            var parts = lines[i].Split(',').Select(p => p.Trim()).ToArray();
 
                             var demand = int.Parse(parts[0]);
                             var goodProb = decimal.Parse(parts[1], CultureInfo.InvariantCulture);
@@ -130,15 +126,13 @@ namespace NewspaperSellerSimulation
                                     new DayTypeDistribution { DayType = Enums.DayType.Poor, Probability = poorProb }
                                 }
                             };
-                            foreach(DemandDistribution dDist in system.DemandDistributions)
+                            int cumulative = 0;
+                            foreach (var dist in demandDist.DayTypeDistributions)
                             {
-                                int cumulative = 0;
-                                foreach (var dist in dDist.DayTypeDistributions)
-                                {
-                                    dist.MinRange = cumulative + 1;
-                                    cumulative += (int)(dist.Probability * 100);
-                                    dist.MaxRange = cumulative;
-                                }
+                                dist.MinRange = cumulative + 1;
+                                cumulative += (int)(dist.Probability * 100);
+                                dist.CummProbability = cumulative;
+                                dist.MaxRange = cumulative;
                             }
 
                             system.DemandDistributions.Add(demandDist);
