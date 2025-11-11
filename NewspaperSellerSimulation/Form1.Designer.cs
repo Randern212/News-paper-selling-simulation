@@ -35,7 +35,7 @@
             // 
             // LoadTestCases
             // 
-            this.LoadTestCases.Location = new System.Drawing.Point(144, 538);
+            this.LoadTestCases.Location = new System.Drawing.Point(144, 637);
             this.LoadTestCases.Name = "LoadTestCases";
             this.LoadTestCases.Size = new System.Drawing.Size(164, 37);
             this.LoadTestCases.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 578);
+            this.ClientSize = new System.Drawing.Size(1081, 680);
             this.Controls.Add(this.dgvSimulationTable);
             this.Controls.Add(this.LoadTestCases);
             this.Name = "Form1";

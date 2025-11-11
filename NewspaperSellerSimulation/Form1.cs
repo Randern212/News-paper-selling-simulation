@@ -105,7 +105,6 @@ namespace NewspaperSellerSimulation
 
                     case "DemandDistributions":
                         system.DemandDistributions = new List<DemandDistribution>();
-                        i++;
 
                         while (i < lines.Count && !IsConfigKey(lines[i]))
                         {
