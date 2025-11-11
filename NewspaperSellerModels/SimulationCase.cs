@@ -22,16 +22,21 @@ namespace NewspaperSellerModels
         public void calculateCase(int numberPurchased, decimal purchaseCost, decimal sellingPrice, decimal scrapPrice, decimal unitProfit)
         {
             DailyCost = numberPurchased * purchaseCost;
-            SalesProfit = Demand * sellingPrice;
 
-            LostProfit = 0;
-            ScrapProfit = 0;
-
-            if (Demand > numberPurchased)
-                LostProfit = (Demand - numberPurchased) * (sellingPrice - purchaseCost);
-            else if (Demand < numberPurchased)
+            if (Demand >= numberPurchased)
+            {
+                // Sold all newspapers
+                SalesProfit = numberPurchased * sellingPrice;
+                LostProfit = (Demand - numberPurchased) * unitProfit;
+                ScrapProfit = 0;
+            }
+            else
+            {
+                // Couldn't sell all newspapers
+                SalesProfit = Demand * sellingPrice;
+                LostProfit = 0;
                 ScrapProfit = (numberPurchased - Demand) * scrapPrice;
-            
+            }
 
             DailyNetProfit = SalesProfit - DailyCost - LostProfit + ScrapProfit;
         }

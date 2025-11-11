@@ -73,10 +73,10 @@ namespace NewspaperSellerModels
                 this.PerformanceMeasures.TotalNetProfit +=sim.DailyNetProfit;
 
                 if(sim.LostProfit>0)
-                    this.PerformanceMeasures.DaysWithUnsoldPapers++;
+                    this.PerformanceMeasures.DaysWithMoreDemand++;
 
                 if(sim.ScrapProfit>0)
-                    this.PerformanceMeasures.DaysWithMoreDemand++;
+                    this.PerformanceMeasures.DaysWithUnsoldPapers++;
             }
         }
 
