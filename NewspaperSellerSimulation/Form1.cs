@@ -21,10 +21,14 @@ namespace NewspaperSellerSimulation
         {
             InitializeComponent();
             this.system = system;
-            BindingSource simBindingSource = new BindingSource();
 
+            BindingSource simBindingSource = new BindingSource();
             simBindingSource.DataSource = system.SimulationTable;
             dgvSimulationTable.DataSource = simBindingSource;
+
+            BindingSource performanceBindingSource=new BindingSource();
+            performanceBindingSource.DataSource= system.PerformanceMeasures.toList();
+            performanceGrid.DataSource = performanceBindingSource;
         }
 
         private void loadTestCasesButton(object sender, EventArgs e)
@@ -139,7 +143,6 @@ namespace NewspaperSellerSimulation
                                 dist.DayTypeDistributions[index].MaxRange = cumulative;
                             }
                         }
-                        DebugDemandRanges(system);
                         break;
 
                     default:
@@ -165,27 +168,23 @@ namespace NewspaperSellerSimulation
         };
             return keys.Contains(line);
         }
-        private void DebugDemandRanges(SimulationSystem system)
-        {
-            Console.WriteLine("DEMAND RANGES DEBUG:");
-            foreach (var dayType in new[] { Enums.DayType.Good, Enums.DayType.Fair, Enums.DayType.Poor })
-            {
-                Console.WriteLine($"\n{dayType} Day:");
-                foreach (var demandDist in system.DemandDistributions)
-                {
-                    var dist = demandDist.DayTypeDistributions.First(d => d.DayType == dayType);
-                    Console.WriteLine($"  Demand {demandDist.Demand}: Range {dist.MinRange}-{dist.MaxRange} (Prob: {dist.Probability})");
-                }
-            }
-        }
+
         private void RefreshDataBinding()
         {
-            var bindingSource = dgvSimulationTable.DataSource as BindingSource;
-            if (bindingSource != null)
+            var tableBindingSource = dgvSimulationTable.DataSource as BindingSource;
+            var performanceBindingSource= performanceGrid.DataSource as BindingSource;
+            if (tableBindingSource != null )
             {
-                bindingSource.ResetBindings(false);
+                tableBindingSource.ResetBindings(false);
+            }
+            if (performanceBindingSource != null)
+            {
+                performanceBindingSource.DataSource = system.PerformanceMeasures.toList();
+                performanceGrid.DataSource = performanceBindingSource;
             }
         }
+
+
     }
 
 

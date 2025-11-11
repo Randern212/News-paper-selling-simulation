@@ -30,14 +30,16 @@
         {
             this.LoadTestCases = new System.Windows.Forms.Button();
             this.dgvSimulationTable = new System.Windows.Forms.DataGridView();
+            this.performanceGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulationTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // LoadTestCases
             // 
-            this.LoadTestCases.Location = new System.Drawing.Point(144, 637);
+            this.LoadTestCases.Location = new System.Drawing.Point(467, 623);
             this.LoadTestCases.Name = "LoadTestCases";
-            this.LoadTestCases.Size = new System.Drawing.Size(164, 37);
+            this.LoadTestCases.Size = new System.Drawing.Size(164, 45);
             this.LoadTestCases.TabIndex = 0;
             this.LoadTestCases.Text = "Load TestCase";
             this.LoadTestCases.UseVisualStyleBackColor = true;
@@ -48,19 +50,29 @@
             this.dgvSimulationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSimulationTable.Location = new System.Drawing.Point(12, 6);
             this.dgvSimulationTable.Name = "dgvSimulationTable";
-            this.dgvSimulationTable.Size = new System.Drawing.Size(1057, 526);
+            this.dgvSimulationTable.Size = new System.Drawing.Size(1013, 526);
             this.dgvSimulationTable.TabIndex = 1;
+            // 
+            // performanceGrid
+            // 
+            this.performanceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.performanceGrid.Location = new System.Drawing.Point(1031, 6);
+            this.performanceGrid.Name = "performanceGrid";
+            this.performanceGrid.Size = new System.Drawing.Size(202, 571);
+            this.performanceGrid.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 680);
+            this.ClientSize = new System.Drawing.Size(1245, 680);
+            this.Controls.Add(this.performanceGrid);
             this.Controls.Add(this.dgvSimulationTable);
             this.Controls.Add(this.LoadTestCases);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulationTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button LoadTestCases;
         private System.Windows.Forms.DataGridView dgvSimulationTable;
+        private System.Windows.Forms.DataGridView performanceGrid;
     }
 }
