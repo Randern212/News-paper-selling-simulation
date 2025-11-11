@@ -19,7 +19,7 @@ namespace NewspaperSellerModels
         public decimal ScrapProfit { get; set; }
         public decimal DailyNetProfit { get; set; }
 
-        public void calculateCase()
+        public void calculateCase(decimal purchaseCost, decimal sellingCost, decimal scrapPrice, decimal unitProfit)
         {
 
         }
