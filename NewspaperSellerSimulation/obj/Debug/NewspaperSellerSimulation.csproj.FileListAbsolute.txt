@@ -112,3 +112,16 @@ C:\Users\Osama\Desktop\[InventorySimulation]_Class Library\NewspaperSellerSimula
 C:\Users\Osama\Desktop\[InventorySimulation]_Class Library\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csprojResolveAssemblyReference.cache
 C:\Users\Osama\Desktop\[InventorySimulation]_Class Library\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.Properties.Resources.resources
 C:\Users\Osama\Desktop\[InventorySimulation]_Class Library\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.GenerateResource.Cache
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\bin\Debug\NewspaperSellerSimulation.exe.config
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\bin\Debug\NewspaperSellerSimulation.exe
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\bin\Debug\NewspaperSellerSimulation.pdb
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\bin\Debug\NewspaperSellerModels.dll
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\bin\Debug\NewspaperSellerModels.pdb
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.AssemblyReference.cache
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.exe.config
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.Properties.Resources.resources
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.GenerateResource.cache
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.CoreCompileInputs.cache
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\Newspape.551AD9A8.Up2Date
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.exe
+G:\Studying Bullshit\modeling\Task 2\NewspaperSellerSimulation_Students\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.pdb
